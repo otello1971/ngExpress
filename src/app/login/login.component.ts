@@ -4,9 +4,6 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { HttpResponse } from 'selenium-webdriver/http';
 
-
-interface Login { username: string; password: string; }
-
 @Component({
   templateUrl: './login.component.html',
   styles: []
@@ -14,7 +11,6 @@ interface Login { username: string; password: string; }
 export class LoginComponent implements OnInit {
 
  loginForm: FormGroup;
- submitted = false;
 
  constructor(
     private formBuilder: FormBuilder,
