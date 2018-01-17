@@ -1,9 +1,9 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { MatDialog, MatDialogRef} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-// import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { CrudService } from './services/crud.service';
+// import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -12,42 +12,36 @@ import { HttpClient } from '@angular/common/http';
 })
 
 
-export class AppComponent {
-    userLoggedIn: UserLoggedIn;
-    userToken: string;
+export class AppComponent implements OnInit {
+    userLoggedIn: UserLoggedIn = null;
     expressRes: Object; // ExpressRes;
-    // httpResponse: HttpResponse<Object>;
+
     constructor(
-      private http: HttpClient,
-      public dialog: MatDialog) {}
+      private dialog: MatDialog,
+      private crud: CrudService) {}
+
+    ngOnInit() {
+
+    }
 
     openDialog(option): void {
-      const url = 'http://192.168.188.129:3000/tools/' +  option;
       const dialogRef = this.dialog.open(LoginComponent, {
         width: '250px',
-        data: { username: '', password: '' }
+        data: { username: '', password: '', title: option }
       });
 
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          this.userLoggedIn = result;
-          console.log('The dialog was closed: ' + JSON.stringify(result));
-          this.http
-          .post<Object>(
-              url,
-              result,
-              {
-                observe: 'response',
-                // headers: new HttpHeaders().set('Content-Type', 'application/json'),
-                responseType: 'json',
-                withCredentials: true
-              }
-          )
+      dialogRef.afterClosed().subscribe(dialog_object => {
+        if (dialog_object) {
+          this.crud.post_login_option(dialog_object, option)
           .subscribe(
-            (resp) => {
+            (resp: ExpressRes) => {
+              console.log('resp login/signup: ' + JSON.stringify(resp.body));
               this.expressRes = resp.body;
-              console.log('Cookie: ' + JSON.stringify(resp.headers));
-              console.log('Respuesta: ' + JSON.stringify(resp));
+              this.userLoggedIn = dialog_object; // using destructuring technique: set username
+          },
+          (err) => {
+              this.expressRes = err.error;
+              this.userLoggedIn = null;
           });
         }
       });
@@ -55,56 +49,32 @@ export class AppComponent {
 
     logout() {
       if (this.userLoggedIn) {
-        this.http
-        .get('http://192.168.188.129:3000/tools/logout',
-        {
-          withCredentials: true
-        })
+        this.crud.get_logout()
         .subscribe(
           (resp: ExpressRes) => {
-            this.expressRes = resp;
-            this.userToken = null;
+            console.log('resp logout: ' + JSON.stringify(resp.body));
+            this.expressRes = resp.body;
             this.userLoggedIn = null;
-            console.log('logout ... : ' + JSON.stringify(resp));
-          }
-        );
+        });
       }
     }
 
     ask() {
-      // if (this.userLoggedIn) {
-        this.http
-        .get('http://192.168.188.129:3000/',
-        {
-          observe: 'response',
-          responseType: 'text',
-          withCredentials: true
-        })
+        this.crud.get()
         .subscribe(
-          (resp: Object) => {
-            this.userToken = JSON.stringify(resp);
-            console.log('token received is : ' + JSON.stringify(resp));
-          }
-        );
-      // }
+          (resp: ExpressRes) => {
+            this.expressRes = resp.body;
+          });
     }
 
     response() {
       if (this.userLoggedIn) {
-        this.http
-        .post('http://192.168.188.129:3000/',
-        this.userToken,
-        {
-          observe: 'response',
-          responseType: 'text',
-          withCredentials: true
-        })
+        this.crud.post('dummy')
         .subscribe(
-          (resp: Object) => {
-            this.userToken = JSON.stringify(resp);
-            console.log('token received is : ' + JSON.stringify(resp));
-          }
-        );
+          (resp: ExpressRes) => {
+            console.log('resp response: ' + JSON.stringify(resp.body));
+            this.expressRes = resp.body;
+          });
       }
     }
 

@@ -1,16 +1,14 @@
 <mat-toolbar>
-    <ng-container [ngSwitch]="expressRes?.status">
-            <ng-container *ngSwitchCase="'login'">
-                <button mat-button (click)="logout()">logout {{userLoggedIn.username}}</button>
-            </ng-container>
-            <ng-container *ngSwitchDefault >
-                <button mat-button (click)="openDialog('login')">login</button>
-            </ng-container>
+    <ng-container *ngIf="!!userLoggedIn">
+        <button mat-button (click)="logout()">logout {{userLoggedIn.username}}</button>
     </ng-container>
-    <button mat-button (click)="openDialog('signup')">sing up</button>
+    <ng-container *ngIf="!userLoggedIn">
+        <button mat-button (click)="openDialog('login')">login</button>
+    </ng-container>
+    <button [disabled]="!!userLoggedIn" mat-button (click)="openDialog('signup')">sing up</button>
     <button mat-button (click)="ask()">Ask</button>
     <button mat-button (click)="response()" [disabled]="!userLoggedIn">Response</button>
 </mat-toolbar>
-<div *ngIf="userToken">
-    Your token is: {{userToken}}
+<div *ngIf="expressRes">
+    {{expressRes.body}}
 </div>

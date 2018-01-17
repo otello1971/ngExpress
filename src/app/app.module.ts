@@ -11,8 +11,10 @@ import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angu
 
 
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth.service';
-import { HttpXsrfInterceptor } from './services/http.xsrf.interceptor';
+import { DOCUMENT } from '@angular/common';
+import { LoggerService } from './services/logger.service';
+import { CrudService } from './services/crud.service';
+
 
 @NgModule({
   declarations: [
@@ -34,12 +36,8 @@ import { HttpXsrfInterceptor } from './services/http.xsrf.interceptor';
     LoginComponent
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }
-  //   AuthService,
-  //   {provide: HTTP_INTERCEPTORS,
-  //    useClass: JwtAuthService,
-  //    multi: true,
-  // },
+    { provide: HTTP_INTERCEPTORS, useClass: LoggerService, multi: true },
+    CrudService
 ],
   bootstrap: [AppComponent]
 })
