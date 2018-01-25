@@ -10,7 +10,7 @@ export class CrudService {
   get(): Observable<any> {
     return this.http
     .get(
-      '/api',
+      '/api/tools',
       {
         observe: 'response',
         responseType: 'text',
@@ -24,16 +24,18 @@ export class CrudService {
       '/api/tools/logout',
       {
         observe: 'response',
+        responseType: 'json',
         withCredentials: true
       });
   }
 
-  post_login_option(object, option): Observable<any> {
+  post_login_option(loginObject: Login, option): Observable<any> {
     return this.http
     .post(
         '/api/tools/' + option,
-        object,
+        loginObject,
         {
+          // headers: new HttpHeaders().set('Authorization', 'Basic ' + authToken ),
           observe: 'response',
           responseType: 'json',
           withCredentials: true
@@ -43,7 +45,7 @@ export class CrudService {
   post(userToken): Observable<any> {
     return this.http
     .post(
-      '/api',
+      '/api/tools',
       userToken,
       {
         observe: 'response',

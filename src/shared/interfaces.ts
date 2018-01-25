@@ -1,5 +1,5 @@
-interface Login { username: string; password: string; title: string; }
-interface ExpressRes { status: string; body: any; }  // generic answer format defined in Express
-interface UserLoggedIn { username: string; }
+interface Login { username: string; password: string; }
+interface ExpressRes { status: string; message: any; payload?: any; }  // generic format defined for Express replies
+interface User { username: string; }
 
 

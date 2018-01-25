@@ -1,15 +1,26 @@
-<h1 mat-dialog-title>{{title}}</h1>
-<form [formGroup]="loginForm" novalidate>
-    <div mat-dialog-content>
-        <mat-form-field>
-            <input matInput formControlName="username" placeholder="username" [(ngModel)]="data.username">
-        </mat-form-field>
-        <mat-form-field>
-            <input type="password" matInput formControlName="password" placeholder="password" [(ngModel)]="data.password">
-        </mat-form-field>
-        </div>
-    <div mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">No Thanks</button>
-        <button mat-button [mat-dialog-close]="data" [disabled]="loginForm.invalid" cdkFocusInitial>Ok</button>
+<div class="container">
+    <div class="base">
+        <h1 mat-dialog-title>{{option}}</h1>
+        <form [formGroup]="loginForm" novalidate>
+            <div mat-dialog-content>
+                <mat-form-field>
+                    <input matInput formControlName="username" placeholder="username" [(ngModel)]="loginObject.username" cdkFocusInitial>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="password" matInput formControlName="password" placeholder="password" [(ngModel)]="loginObject.password">
+                </mat-form-field>
+            </div>
+            <div mat-dialog-actions>
+                <button mat-button (click)="onNoClick()">No Thanks</button>
+                <button mat-button (click)="option=='login'?login():signup()" [disabled]="loginForm.invalid">Ok</button>
+            </div>
+        </form>
+        <br/>
     </div>
-  </form>
+    <ng-container *ngIf="status=='charging'">
+        <div class="spinner-backgr"></div>
+        <div class="spinner-foregr">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-container>
+</div>
