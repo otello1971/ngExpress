@@ -4,7 +4,6 @@ import { MatDialog, MatDialogRef} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { CrudService } from './services/crud.service';
 import { GLOBALS } from '../shared/globals';
-import { ToolbarComponent} from './toolbar/toolbar.component';
 
 @Component({
   selector: 'app-root',

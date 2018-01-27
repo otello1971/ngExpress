@@ -1,27 +1,32 @@
 import { NgModule } from '@angular/core';
 import 'hammerjs';  // necesario para mat-slider, dejarlo en 2do lugar
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 // ---
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import
-import { MaterialModule } from '../shared/material.module';
 import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-// -- Componentes Locales
+import { MaterialModule } from '../shared/material.module';
+
+// -- Componentes, Servicios y Módulos Locales
+import { Toolbar2Module } from './toolbar2/toolbar2.module';
 import { LoginComponent } from './login/login.component';
 import { LoggerService } from './services/logger.service';
 import { CrudService } from './services/crud.service';
 import { GLOBALS, user } from '../shared/globals';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ResponseComponent } from './response/response.component';
+import { PageNotFoundComponent } from './misc/page-not-found.component';
+
 
 
 const appRoutes: Routes = [
   { path: 'response', component: ResponseComponent },
-  // { path: 'query', component: QueryComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -29,22 +34,25 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     ToolbarComponent,
-    ResponseComponent
+    ResponseComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'xsrf_token',
       headerName: 'x_xsrf_token',  // Express doesn't manage uppercase headers
     }),
-    FormsModule,
     MaterialModule,
     ReactiveFormsModule,
+    Toolbar2Module,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
-    )
+    ),
   ],
   entryComponents: [
     LoginComponent

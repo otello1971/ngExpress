@@ -5,7 +5,6 @@ import { GLOBALS } from '../../shared/globals';
 import { LoginComponent } from '../login/login.component';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -14,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ToolbarComponent {
   @Output() menuButtonClick = new EventEmitter();
   expressRes: ExpressRes; // ExpressRes;
-  showCard = false;
+
 
   constructor(
     private dialog: MatDialog,
@@ -70,7 +69,5 @@ export class ToolbarComponent {
     }
   }
 
-  toggleCard() {
-    this.showCard = true;
-  }
+
 }
