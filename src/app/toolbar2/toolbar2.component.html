@@ -1,11 +1,12 @@
 <div class="container">
-    <div class="opcion1 menu-item"></div>
-    <div class="opcion2 menu-item" (mouseenter)="showCard('card1')" (mouseleave)="hideCard($event)">primero</div>
-    <div class="opcion3 menu-item" (mouseenter)="showCard('card2')" (mouseleave)="hideCard($event)">segundo</div>
-    <div class="opcion4 menu-item" (mouseenter)="showCard('card3')" (mouseleave)="hideCard($event)">tercero</div>
-    <div class="opcion5 menu-item">cuarto</div>
-    <div class="opcion6 menu-item"></div>
-    <div class="opcioncard fadeIn" (mouseleave)="hideCard($event)">
+    <div id="card0" class="card0 menu-item"></div>
+    <div id="card1" class="card1 menu-item" (mouseenter)="showCard($event)" (mouseleave)="hideCard($event)"><div>primero</div></div>
+    <div id="card2" class="card2 menu-item" (mouseenter)="showCard($event)" (mouseleave)="hideCard($event)">segundo</div>
+    <div id="card3" class="card3 menu-item" (mouseenter)="showCard($event)" (mouseleave)="hideCard($event)">tercero</div>
+    <div id="card4" class="card4 menu-item">cuarto</div>
+    <div id="card5" class="card5 menu-item"></div>
+    <div class="backcard"></div>
+    <div class="opcioncard" (mouseleave)="hideCard($event)">
         <router-outlet name="cards"></router-outlet>
     </div>
 </div>

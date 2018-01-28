@@ -1,8 +1,7 @@
 .container {
   display: grid;
   grid-template: 50px 50px 1fr/100%;
-
-  position: fixed;
+  // position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -23,6 +22,7 @@
 
 .sidenav-container {
   grid-area: 3/1/span 1/span 1;
+  overflow: auto; //scroll if needed
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   z-index: 2;

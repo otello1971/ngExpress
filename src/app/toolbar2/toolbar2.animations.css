@@ -1,0 +1,38 @@
+@keyframes cardFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+  
+.cardIn {
+    animation-name: cardFade;
+    animation-iteration-count: 1;
+    animation-duration: 350ms;
+    animation-timing-function: ease-in;
+}
+
+
+.buttonIn {
+    transition: 1s;
+    opacity: 0.5;
+}
+
+.buttonOut {
+    transition: 1s;
+    opacity: 1;
+}
+/* .buttonFade:hover  {opacity: 0.5;} */
+
+/* @keyframes fadeOut {
+    from { opacity: .5; }
+    to   { opacity: 1; }
+}
+  
+.changing {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+} */

@@ -21,10 +21,12 @@ import { GLOBALS, user } from '../shared/globals';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ResponseComponent } from './response/response.component';
 import { PageNotFoundComponent } from './misc/page-not-found.component';
+import { HomeComponent } from './home/home.component';
 
 
 
 const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'response', component: ResponseComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     ToolbarComponent,
     ResponseComponent,
     PageNotFoundComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
