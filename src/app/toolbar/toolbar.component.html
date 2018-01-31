@@ -1,17 +1,64 @@
-<mat-toolbar  color="accent" role="header" class="flexToolbar">
-    <button mat-icon-button (click)="menuButtonClick.emit()"><mat-icon>menu</mat-icon></button>
-    <button mat-button class="toolbarItem">ask</button>
-    <button mat-button (click)="response()" [disabled]="!user" class="toolbarItem">response</button>
-    <span class="toolbarLastItem"></span>
-    <ng-container *ngIf="!!user">
-        <button mat-button (click)="logout()" class="toolbarItem">logout {{user.username}}</button>
-    </ng-container>
-    <ng-container *ngIf="!user">
-        <button mat-button (click)="openDialog('login')" class="toolbarItem">login</button>
-        <button mat-button (click)="openDialog('signup')" class="toolbarItem">sing up</button>
-    </ng-container>
-</mat-toolbar>
-<router-outlet name="toolbar2"></router-outlet>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark toolbar1" role="navigation">
+    <p class="navbar-brand text-light m-1">Mi Empresa</p>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+      data-target=".multi-collapse" aria-controls="navbarSupportedContent navbarSupportedContent2"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse multi-collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav d-flex flex-sm-column flex-md-row">
+        <li class="nav-item px-sm-0 px-md-2">
+          <a class="nav-link">ask</a>
+        </li>
+        <li class="nav-item px-sm-0 px-md-2">
+          <a class="nav-link" (click)="response()" [class.disabled]="!user">response</a>
+        </li>
+        <ng-container *ngIf="!!user">
+          <li class="nav-item px-sm-0 ml-md-auto px-md-2">
+            <a class="nav-link" (click)="logout()">logout {{user.username}}</a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="!user">
+          <li class="nav-item px-sm-0 ml-md-auto px-md-2">
+            <a class="nav-link" (click)="openDialog('login')">login</a>
+          </li>
+          <li class="nav-item px-sm-0 px-md-2">
+            <a class="nav-link" (click)="openDialog('signup')">sing up</a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
 
-
-
+<!-- <div class="col">
+    <mat-toolbar color="accent" role="header"  class="d-flex flex-row">
+      <div class="col-1">
+        <button mat-icon-button (click)="menuButtonClick.emit()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="p-2">
+        <button mat-button class="toolbarItem">ask</button>
+      </div>
+      <div class="p-2">
+        <button mat-button (click)="response()" [disabled]="!user" class="toolbarItem">response</button>
+      </div>
+      <div class="ml-auto p-2">
+        <div class="d-flex flex-row">
+          <ng-container *ngIf="!!user">
+            <div class="p-2">
+              <button mat-button (click)="logout()" class="toolbarItem">logout {{user.username}}</button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!user">
+            <div class="p-2">
+              <button mat-button (click)="openDialog('login')" class="toolbarItem">login</button>
+          </div>
+          <div class="p-2">
+              <button mat-button (click)="openDialog('signup')" class="toolbarItem">sing up</button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+  </mat-toolbar>
+</div> -->

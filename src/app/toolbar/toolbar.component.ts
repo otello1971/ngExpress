@@ -11,8 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-  @Output() menuButtonClick = new EventEmitter();
-  expressRes: ExpressRes; // ExpressRes;
+  expressRes: ExpressRes; // Express Response
 
 
   constructor(

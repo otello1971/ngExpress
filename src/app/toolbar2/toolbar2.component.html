@@ -1,13 +1,31 @@
-<div class="container">
-    <div id="card0" class="card0 menu-item"></div>
-    <div id="card1" class="card1 menu-item" (mouseenter)="showCard($event)" (mouseleave)="hideCard($event)"><div>primero</div></div>
-    <div id="card2" class="card2 menu-item" (mouseenter)="showCard($event)" (mouseleave)="hideCard($event)">segundo</div>
-    <div id="card3" class="card3 menu-item" (mouseenter)="showCard($event)" (mouseleave)="hideCard($event)">tercero</div>
-    <div id="card4" class="card4 menu-item">cuarto</div>
-    <div id="card5" class="card5 menu-item"></div>
-    <div class="backcard"></div>
-    <div class="opcioncard" (mouseleave)="hideCard($event)">
-        <router-outlet name="cards"></router-outlet>
-    </div>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light toolbar2" role="navigation" id="hola">
+  <div class="collapse multi-collapse navbar-collapse" id="navbarSupportedContent2">
+  <ul class="navbar-nav d-flex flex-sm-column flex-md-row justify-content-center align-items-stretch">
+    <li class="nav-item px-sm-0 px-md-2">----------------------------</li>
+    <li class="nav-item px-sm-0 px-md-2" (mouseleave)="hideCard($event)">
+      <a class="nav-link" href="#" (mouseenter)="showModal.emit()" >primero</a>
+    </li>
+    <li class="nav-item px-sm-0 px-md-2">
+      <a class="nav-link" href="#" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">segundo</a>
+    </li>
+    <li class="nav-item px-sm-0 px-md-2">
+      <a class="nav-link" href="#" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">tercero</a>
+    </li>
+    <li class="nav-item px-sm-0 px-md-2">
+      <a class="nav-link disabled" href="#">cuarto</a>
+    </li>
+    <li class="nav-item px-sm-0 px-md-2">----------------------------</li>
+  </ul>
 </div>
+</nav>
+<!-- <div class="col">
+  <mat-toolbar color="accent" role="header" class="container3 row">
+    <div id="card0" class="col"></div>
+    <div id="card1" class="col" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">primero</div>
+    <div id="card2" class="col" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">segundo</div>
+    <div id="card3" class="col" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">tercero</div>
+    <div id="card4" class="col">cuarto</div>
+    <div id="card5" class="col"></div>
+  </mat-toolbar>
+</div> -->
 

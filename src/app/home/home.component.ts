@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CarouselComponent } from '../carousel/carousel.component';
 @Component({
   selector: 'app-home',
   template: `
-  <div>
+  <!-- div class="row">
+    <div class="col">
+      <app-carousel></app-carousel>
+    </div>
+  </div -->
     <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum neque leo, id porttitor arcu malesuada et. Suspendisse suscipit luctus eros egestas convallis. Duis a eros justo. Curabitur at quam scelerisque, tempor velit ut, finibus turpis. Pellentesque euismod nulla venenatis, molestie dolor et, condimentum ipsum. Sed quis neque diam. Donec ultrices imperdiet nisi, quis aliquet enim viverra eget. Maecenas id purus vitae quam lacinia semper in eget massa. Aenean vel bibendum augue. Cras vitae rutrum lacus. In at nulla dapibus, finibus enim ac, luctus leo.
     </p><p>
@@ -25,7 +29,7 @@ import { Component, OnInit } from '@angular/core';
     </p><p>
     Cras rutrum risus id est pretium, et posuere mi efficitur. Donec fermentum eros vel nulla elementum pulvinar. Nulla vel felis at nulla suscipit malesuada. Proin eu enim posuere, bibendum massa a, aliquet diam. Integer vitae nisi sit amet augue facilisis fringilla. Phasellus a dolor arcu. Sed sollicitudin convallis egestas.
     </p>
-    </div>`,
+  `,
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {

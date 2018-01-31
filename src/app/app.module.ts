@@ -13,7 +13,6 @@ import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angu
 import { MaterialModule } from '../shared/material.module';
 
 // -- Componentes, Servicios y Módulos Locales
-import { Toolbar2Module } from './toolbar2/toolbar2.module';
 import { LoginComponent } from './login/login.component';
 import { LoggerService } from './services/logger.service';
 import { CrudService } from './services/crud.service';
@@ -22,6 +21,14 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ResponseComponent } from './response/response.component';
 import { PageNotFoundComponent } from './misc/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { Toolbar2Component } from './toolbar2/toolbar2.component';
+import { Toolbar3Component } from './toolbar3/toolbar3.component';
+
+// Cards to show
+import { Card1Component } from './toolbar2/card1/card1.component';
+import { Card2Component } from './toolbar2/card2/card2.component';
+import { Card3Component } from './toolbar2/card3/card3.component';
 
 
 
@@ -39,6 +46,12 @@ const appRoutes: Routes = [
     ResponseComponent,
     PageNotFoundComponent,
     HomeComponent,
+    CarouselComponent,
+    Toolbar2Component,
+    Toolbar3Component,
+    Card1Component,
+    Card2Component,
+    Card3Component
   ],
   imports: [
     BrowserModule,
@@ -51,15 +64,15 @@ const appRoutes: Routes = [
     }),
     MaterialModule,
     ReactiveFormsModule,
-    Toolbar2Module,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
     ),
   ],
   entryComponents: [
-    LoginComponent
-  ],
+    LoginComponent,
+  ]
+,
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoggerService, multi: true },
     { provide: GLOBALS, useValue: user },
