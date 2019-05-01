@@ -1,6 +1,23 @@
 .toolbar2 {
     background-color: #008b8b;
     font-family: 'Damion', cursive;
-    font-size: 24px;
+    font-size: 28px;
     color: wheat;
+    float: none;
+    z-index: 6;
+}
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
 }

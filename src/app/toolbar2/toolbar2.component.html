@@ -1,31 +1,21 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light toolbar2" role="navigation" id="hola">
+<nav class="navbar navbar-expand-lg navbar-light toolbar2 py-0" role="navigation" id="toolbar2.nav" [class.fixed-top]="showBrand">
   <div class="collapse multi-collapse navbar-collapse" id="navbarSupportedContent2">
-  <ul class="navbar-nav d-flex flex-sm-column flex-md-row justify-content-center align-items-stretch">
-    <li class="nav-item px-sm-0 px-md-2">----------------------------</li>
-    <li class="nav-item px-sm-0 px-md-2" (mouseleave)="hideCard($event)">
-      <a class="nav-link" href="#" (mouseenter)="showModal.emit()" >primero</a>
-    </li>
-    <li class="nav-item px-sm-0 px-md-2">
-      <a class="nav-link" href="#" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">segundo</a>
-    </li>
-    <li class="nav-item px-sm-0 px-md-2">
-      <a class="nav-link" href="#" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">tercero</a>
-    </li>
-    <li class="nav-item px-sm-0 px-md-2">
-      <a class="nav-link disabled" href="#">cuarto</a>
-    </li>
-    <li class="nav-item px-sm-0 px-md-2">----------------------------</li>
-  </ul>
-</div>
+    <ul class="navbar-nav d-flex flex-sm-column flex-md-row justify-content-center align-items-stretch">
+      <li class="nav-item px-sm-0 px-md-5 py-0" (mouseout)="hideCard($event)">
+        <a class="nav-link" href="#" (mouseenter)="showModal.emit('card1')">primero</a>
+      </li>
+      <li class="nav-item px-sm-0 px-md-5 py-0">
+        <a class="nav-link" href="#" (mouseenter)="showModal.emit('card2')" (mouseout)="hideCard($event)">segundo</a>
+      </li>
+      <ng-container *ngIf="showBrand">
+        <a class="navbar-brand px-sm-0 px-md-5 py-0" href="#" style="font-family:'';">Mi Empresa</a>
+      </ng-container>
+      <li class="nav-item px-sm-0 px-md-5 py-0">
+        <a class="nav-link" href="#" (mouseenter)="showModal.emit('card3')" (mouseout)="hideCard($event)">tercero</a>
+      </li>
+      <li class="nav-item px-sm-0 px-md-5 py-0">
+        <a class="nav-link disabled" href="#">cuarto</a>
+      </li>
+    </ul>
+  </div>
 </nav>
-<!-- <div class="col">
-  <mat-toolbar color="accent" role="header" class="container3 row">
-    <div id="card0" class="col"></div>
-    <div id="card1" class="col" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">primero</div>
-    <div id="card2" class="col" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">segundo</div>
-    <div id="card3" class="col" (mouseenter)="showModal.emit()" (mouseleave)="hideCard($event)">tercero</div>
-    <div id="card4" class="col">cuarto</div>
-    <div id="card5" class="col"></div>
-  </mat-toolbar>
-</div> -->
-

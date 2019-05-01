@@ -13,6 +13,7 @@ import { HttpClientModule, HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angu
 import { MaterialModule } from '../shared/material.module';
 
 // -- Componentes, Servicios y Módulos Locales
+import { Toolbar3Module } from './toolbar3/toolbar3.module';
 import { LoginComponent } from './login/login.component';
 import { LoggerService } from './services/logger.service';
 import { CrudService } from './services/crud.service';
@@ -25,17 +26,12 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { Toolbar2Component } from './toolbar2/toolbar2.component';
 import { Toolbar3Component } from './toolbar3/toolbar3.component';
 
-// Cards to show
-import { Card1Component } from './toolbar2/card1/card1.component';
-import { Card2Component } from './toolbar2/card2/card2.component';
-import { Card3Component } from './toolbar2/card3/card3.component';
-
-
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
   { path: 'response', component: ResponseComponent },
+  { path: '', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent }
+
 ];
 
 @NgModule({
@@ -49,9 +45,6 @@ const appRoutes: Routes = [
     CarouselComponent,
     Toolbar2Component,
     Toolbar3Component,
-    Card1Component,
-    Card2Component,
-    Card3Component
   ],
   imports: [
     BrowserModule,
@@ -64,6 +57,7 @@ const appRoutes: Routes = [
     }),
     MaterialModule,
     ReactiveFormsModule,
+    Toolbar3Module,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only

@@ -1,12 +1,12 @@
 <!-- <div class="container-fluid"> -->
-    <div class="row">
-        <div class="col" id="toolbar1">
+    <div class="row" id="toolbar1">
+        <div class="col">
             <app-toolbar></app-toolbar>
         </div>
     </div>
-    <div class="row">
-        <div class="col" id="toolbar2">
-            <app-toolbar2 (showModal)="modal_.showModal()" (hideModal)="modal_.hideModal()">
+    <div class="row" id="toolbar2">
+        <div class="col">
+            <app-toolbar2 (showModal)="modal_.showModal($event)" (hideModal)="modal_.hideModal()">
             </app-toolbar2>
         </div>
     </div>

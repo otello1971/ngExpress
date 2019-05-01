@@ -1,0 +1,31 @@
+.myCard {
+    width: 85%;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myCard .card {
+    align-items: center;
+}
+
+.myCard .card img {
+    width: 30%;
+}
+
+.myCard .card .card-body {
+    display: grid;
+    align-items: end;
+    justify-items: center;
+}
+.cardIn {
+    transition: 1s;
+    opacity: 1;
+}
+
+.cardOut {
+    transition: 1s;
+    opacity: 0;
+}

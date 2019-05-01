@@ -1,44 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar3',
   templateUrl: './toolbar3.component.html',
-  styleUrls: ['./toolbar3.component.css']
+  styleUrls: ['./toolbar3.component.scss']
 })
 export class Toolbar3Component implements OnInit {
   modal;
-  img;
-  modalImg;
-  toolbar1;
-  toolbar2;
+  modalContent;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     // Get the modal
     this.modal = document.getElementById('myModal');
-    this.modalImg = document.getElementById('img01');
+    this.modalContent = document.getElementById('myCard');
   }
 
 
-  showModal() {
-    this.modal.style.display = 'block';
-    this.modalImg.src = '../assets/cat.jpg';
+  showModal(cardname: string) {
+    this.router.navigate([ { outlets: { cards: cardname  }}]);
+    this.modal.className = 'modal cardIn';
   }
 
   hideModal() {
-    this.modal.style.display = 'none';
+    this.router.navigate(['/']);
+    this.modal.className = 'modal cardOut';
   }
 
-  // When the user clicks on <span> (x), close the modal
+  // When the user clicks outside card-group
   onMouseOver(event) {
-    if (event.clientY <  this.modalImg.y ||
-        event.clientY >  this.modalImg.y + this.modalImg.height ||
-        event.clientX <  this.modalImg.x ||
-        event.clientX >  this.modalImg.x + this.modalImg.width) {
-    this.hideModal();
+    if (event.target.id === 'myModal') {
+      this.hideModal();
+    }
   }
-}
-
-
 }

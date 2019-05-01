@@ -1,5 +1,5 @@
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark toolbar1" role="navigation">
-    <p class="navbar-brand text-light m-1">Mi Empresa</p>
+    <a class="navbar-brand text-light m-1" (click)="home()">Mi Empresa</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" 
       data-target=".multi-collapse" aria-controls="navbarSupportedContent navbarSupportedContent2"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -14,12 +14,12 @@
           <a class="nav-link" (click)="response()" [class.disabled]="!user">response</a>
         </li>
         <ng-container *ngIf="!!user">
-          <li class="nav-item px-sm-0 ml-md-auto px-md-2">
+          <li class="nav-item px-sm-0 px-md-2">
             <a class="nav-link" (click)="logout()">logout {{user.username}}</a>
           </li>
         </ng-container>
         <ng-container *ngIf="!user">
-          <li class="nav-item px-sm-0 ml-md-auto px-md-2">
+          <li class="nav-item px-sm-0 px-md-2">
             <a class="nav-link" (click)="openDialog('login')">login</a>
           </li>
           <li class="nav-item px-sm-0 px-md-2">

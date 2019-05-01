@@ -1,6 +1,6 @@
 {
     "/api/*" : {
-        "target" : "https://192.168.188.129:3443",
+        "target" : "https://DESKTOP-KQUHEIS:3443",
         "secure" : false,
         "logLevel" : "debug",
         "changeOrigin": true

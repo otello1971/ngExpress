@@ -1,4 +1,4 @@
-import { Component, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Output, EventEmitter} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { CrudService } from '../services/crud.service';
 import { GLOBALS } from '../../shared/globals';
@@ -23,7 +23,7 @@ export class ToolbarComponent {
 
   openDialog(option): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: '250px',
+      width: '270px',
       data: option  // signup or login
     });
 
@@ -68,5 +68,8 @@ export class ToolbarComponent {
     }
   }
 
+  home() {
+      this.router.navigate(['/']);
+  }
 
 }

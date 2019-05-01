@@ -1,10 +1,6 @@
-import { Component, Input, OnInit, Inject} from '@angular/core';
-import { MatDialog, MatDialogRef} from '@angular/material';
-
-import { FormsModule } from '@angular/forms';
-import { CrudService } from './services/crud.service';
+import { Component, OnInit, Inject} from '@angular/core';
 import { GLOBALS } from '../shared/globals';
-import { Toolbar3Component } from './toolbar3/toolbar3.component';
+import { CrudService } from './services/crud.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +12,19 @@ import { Toolbar3Component } from './toolbar3/toolbar3.component';
 export class AppComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private crud: CrudService,
+              @Inject(GLOBALS) public user: User) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.crud.post('dummy')
+    .subscribe(
+      (resp) => {
+        console.log('app.component ->user: ' + JSON.stringify(resp.body));
+        const token = resp.body.message;
+      },
+      (err) => {
+        this.user = null;
+      });
+  }
 
 }

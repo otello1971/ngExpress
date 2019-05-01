@@ -3,11 +3,7 @@ import { CarouselComponent } from '../carousel/carousel.component';
 @Component({
   selector: 'app-home',
   template: `
-  <!-- div class="row">
-    <div class="col">
-      <app-carousel></app-carousel>
-    </div>
-  </div -->
+    <app-carousel></app-carousel>
     <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum neque leo, id porttitor arcu malesuada et. Suspendisse suscipit luctus eros egestas convallis. Duis a eros justo. Curabitur at quam scelerisque, tempor velit ut, finibus turpis. Pellentesque euismod nulla venenatis, molestie dolor et, condimentum ipsum. Sed quis neque diam. Donec ultrices imperdiet nisi, quis aliquet enim viverra eget. Maecenas id purus vitae quam lacinia semper in eget massa. Aenean vel bibendum augue. Cras vitae rutrum lacus. In at nulla dapibus, finibus enim ac, luctus leo.
     </p><p>
